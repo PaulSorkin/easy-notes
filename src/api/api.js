@@ -1,67 +1,71 @@
 import axios from "axios";
 
-const instance = axios.create(
-    {withCredentials: true,
-        baseURL: 'https://test-api.misaka.net.ru/api/',
-        headers: {
-            "API-KEY": "c8b308c1-df1b-42c8-9ba3-4f13cd28f83e"
-        }}
-)
+const instance = axios.create({
+    baseURL: "https://test-api.misaka.net.ru/api/",
+});
 
-export const usersAPI = {
-    getUsers(currentPage = 1, pageSize = 10) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(response => {
-               return response.data
-            });
+export const accountAPI = {
+    register(username, email, password) {
+        return instance.post("Account/register", {username, email, password})
     },
 
-    follow(userId) {
-        return instance.post(`follow/${userId}`)
+    login(username, password) {
+        return instance.post("Account/login", {username, password})
     },
-    unfollow(userId) {
-        return instance.delete(`follow/${userId}`)
+
+    refreshToken(refreshToken) {
+        return instance.post("Account/refresh-token", {refreshToken})
     },
-    getProfile(userId) {
-        console.warn('Obsolete method. Please use profileAPI object')
-       return  profileAPI.getProfile(userId);
+
+    user() {
+        return instance.get("Account/user")
     }
 }
 
-export const profileAPI = {
-    getProfile(userId) {
-        return  instance.get(`profile/${userId}`);
+export const foldersAPI = {
+    getFolders() {
+        return instance.get("Folders")
     },
-    getStatus(userId) {
-        return  instance.get(`profile/status/${userId}`);
+
+    makeFolder(name, color) {
+        return instance.post("Folders", {name, color})
     },
-    updateStatus(status) {
-        return  instance.put(`profile/status`, {status: status});
+
+    getFolder(folderId) {
+        return instance.get(`Folders/${folderId}`)
     },
-    savePhoto(photoFile) {
-        const formData = new FormData();
-        formData.append("image", photoFile)
-        return instance.put(`profile/photo`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
+
+    pushFolderInfo(folderId, name, color) {
+        return instance.put(`Folders/${folderId}`, {name, color})
+    },
+
+    deleteFolder(folderId) {
+        return instance.delete(`Folders/${folderId}`)
+    },
+
+    getNotes(folderId) {
+        return instance.get(`Folders/${folderId}/notes`)
+    },
+
+    makeNote(folderId, title, content, color) {
+        return instance.post(`Folders/${folderId}/notes`, {title, content, color})
     }
 }
 
-
-export const authAPI = {
-    me() {
-       return instance.get(`auth/me`);
+export const notesAPI = {
+    getNote(noteId) {
+        return instance.get(`Notes/${noteId}`)
     },
 
-    login(email, password, rememberMe = false) {
-        return instance.post(`auth/login`, { email, password, rememberMe });
+    editNote(noteId, title, content, color) {
+        return instance.put(`Notes/${noteId}`, {title, content, color})
     },
 
-    logout() {
-        return instance.delete(`auth/login`);
+    deleteNote(noteId) {
+        return instance.delete(`Notes/${noteId}`)
+    },
+
+    moveNote(noteId, folderId) {
+        return instance.post(`Notes/${noteId}/move-to/${folderId}`)
     }
-
-
 }

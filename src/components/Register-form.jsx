@@ -37,9 +37,7 @@ const RegisterForm = ({validationSchema, onSubmit}) => {
 const Register = () => {
 
     const instance = axios.create({
-        //withCredentials: true,
         baseURL: "https://test-api.misaka.net.ru/api/",
-        //headers: {}
     });
 
     const authAPI = {
