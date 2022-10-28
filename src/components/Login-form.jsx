@@ -2,6 +2,7 @@ import styles from "./FormsControl.module.css"
 import {Form, Formik} from "formik";
 import {MyTextInput} from "./FormsControl";
 import * as Yup from "yup";
+import {accountAPI} from "../api/api"
 
 const LoginForm = ({validationSchema, onSubmit}) => {
     return (
@@ -32,9 +33,10 @@ const LoginForm = ({validationSchema, onSubmit}) => {
 
 const Login = (props) => {
 
-     const onSubmit = (values, actions) => {
-         props.login(values.email, values.password, actions.setStatus);
+     const onSubmit = async (values, actions) => {
+         let response = await accountAPI.login(values.username, values.password);
          actions.setSubmitting(false);
+         console.log(response)
      };
 
 
@@ -52,7 +54,7 @@ const Login = (props) => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginForm onSubmit={() => {}} validationSchema={validationSchema} />
+            <LoginForm onSubmit={onSubmit} validationSchema={validationSchema} />
         </div>
     );
 }
