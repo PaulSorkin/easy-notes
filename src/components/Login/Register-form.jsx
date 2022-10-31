@@ -1,6 +1,6 @@
 import {Form, Formik} from "formik";
-import {MyTextInput} from "./FormsControl";
-import styles from "./FormsControl.module.css";
+import {MyTextInput} from "../FormsControl/FormsControl";
+import styles from "../FormsControl/FormsControl.module.css";
 import * as Yup from "yup";
 import axios from "axios";
 

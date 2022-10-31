@@ -10,11 +10,12 @@ import {accountAPI} from "../api/api";
 import {store} from "./store/store";
 import {isTokenExpired} from "../utils/jwt";
 
-export const loginUser = (data) => async (dispatch) => {
+export const loginUser = (username, password) => async (dispatch) => {
     try {
         dispatch(loginStart())
 
-        const res = await accountAPI.login(data)
+        const res = await accountAPI.login(username, password)
+        debugger
         dispatch(loginSuccess({accessToken: res.data.accessToken, refreshToken: res.data.refreshToken}))
         dispatch(getProfile())
     } catch (e) {

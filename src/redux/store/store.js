@@ -7,7 +7,7 @@ import {logger} from "redux-logger/src";
 
 export const store = configureStore({
     reducer: {
-        auth: authReducer,
+        auth: authReducer.reducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(...(process.env.NODE_ENV !== 'production' ? [logger] : [])),
 })

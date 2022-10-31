@@ -1,7 +1,9 @@
 import axios from "axios";
+import {useSelector} from "react-redux";
+import {store} from "../redux/store/store";
 
 const instance = axios.create({
-    baseURL: "https://test-api.misaka.net.ru/api/",
+    baseURL: "https://test-api.misaka.net.ru/api/"
 });
 
 export const accountAPI = {

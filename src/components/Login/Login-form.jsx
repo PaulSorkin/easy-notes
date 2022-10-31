@@ -1,8 +1,11 @@
-import styles from "./FormsControl.module.css"
+import styles from "../FormsControl/FormsControl.module.css"
 import {Form, Formik} from "formik";
-import {MyTextInput} from "./FormsControl";
+import {MyTextInput} from "../FormsControl/FormsControl";
 import * as Yup from "yup";
-import {accountAPI} from "../api/api"
+import {accountAPI} from "../../api/api"
+import {useAppDispatch} from "../../redux/store/store";
+import {useState} from "react";
+import {loginUser} from "../../redux/auth-actionCreators";
 
 const LoginForm = ({validationSchema, onSubmit}) => {
     return (
@@ -33,11 +36,21 @@ const LoginForm = ({validationSchema, onSubmit}) => {
 
 const Login = (props) => {
 
-     const onSubmit = async (values, actions) => {
-         let response = await accountAPI.login(values.username, values.password);
-         actions.setSubmitting(false);
-         console.log(response)
-     };
+    const dispatch = useAppDispatch();
+
+    //const [username, setUsername] = useState('');
+    //const [password, setPassword] = useState('');
+
+    const onSubmit = (values) => {
+        dispatch(loginUser(values.username, values.password))
+    }
+
+
+     // const onSubmit = async (values, actions) => {
+     //     let response = await accountAPI.login(values.username, values.password);
+     //     actions.setSubmitting(false);
+     //     console.log(response)
+     // };
 
 
     const validationSchema = Yup.object({
