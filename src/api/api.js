@@ -1,9 +1,10 @@
 import axios from "axios";
-import {useSelector} from "react-redux";
 import {store} from "../redux/store/store";
+import {getAccessToken} from "../redux/auth-actionCreators";
+
 
 const instance = axios.create({
-    baseURL: "https://test-api.misaka.net.ru/api/"
+    baseURL: "https://test-api.misaka.net.ru/api/",
 });
 
 export const accountAPI = {
@@ -19,9 +20,12 @@ export const accountAPI = {
         return instance.post("Account/refresh-token", {refreshToken})
     },
 
-    user() {
-        return instance.get("Account/user")
-    }
+    async user() {
+        const accessToken = await store.dispatch(getAccessToken())
+        return instance.get("Account/user", {headers: {Authorization: `Bearer ${accessToken}`}})
+    },
+
+    logout() {},
 }
 
 export const foldersAPI = {

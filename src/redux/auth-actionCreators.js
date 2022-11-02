@@ -15,7 +15,6 @@ export const loginUser = (username, password) => async (dispatch) => {
         dispatch(loginStart())
 
         const res = await accountAPI.login(username, password)
-        debugger
         dispatch(loginSuccess({accessToken: res.data.accessToken, refreshToken: res.data.refreshToken}))
         dispatch(getProfile())
     } catch (e) {
@@ -25,7 +24,7 @@ export const loginUser = (username, password) => async (dispatch) => {
 }
 
 // TODO if I really need it
-//export const logoutUser = () => {}
+export const logoutUser = () => {}
 
 export const getProfile = () => async (dispatch) => {
     try {
@@ -43,9 +42,7 @@ let refreshTokenRequest = null;
 
 export const getAccessToken = () => async (dispatch) => {
     try {
-        const accessToken = store.getState().auth.authData.accessToken
-        const refreshToken = store.getState().auth.authData.refreshToken
-
+        const accessToken = store.getState().auth.authData.accessToken;
         if (!accessToken || isTokenExpired(accessToken)) {
             if (refreshTokenRequest === null) {
                 refreshTokenRequest = accountAPI.refreshToken()
@@ -57,7 +54,7 @@ export const getAccessToken = () => async (dispatch) => {
 
             return {accessToken: res.data.accessToken, refreshToken: res.data.refreshToken}
         }
-        return ({accessToken, refreshToken})
+        return (accessToken)
     } catch (e) {
         console.error(e)
         return null

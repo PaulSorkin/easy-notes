@@ -34,6 +34,7 @@ export const authReducer = createSlice({
                 ...state.authData,
                 accessToken: action.payload.accessToken,
                 refreshToken: action.payload.refreshToken,
+                isAuth: true,
                 isLoading: false,
                 error: null,
             }
@@ -56,9 +57,9 @@ export const authReducer = createSlice({
             ...state,
             profileData: {
                 ...state.profileData,
-                id: action.payload,
-                username: action.payload,
-                email: action.payload,
+                id: action.payload.id,
+                username: action.payload.username,
+                email: action.payload.email,
                 isLoading: false,
                 error: null,
             }
