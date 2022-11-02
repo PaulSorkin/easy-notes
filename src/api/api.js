@@ -29,12 +29,14 @@ export const accountAPI = {
 }
 
 export const foldersAPI = {
-    getFolders() {
-        return instance.get("Folders")
+    async getFolders() {
+        const accessToken = await store.dispatch(getAccessToken())
+        return instance.get("Folders", {headers: {Authorization: `Bearer ${accessToken}`}})
     },
 
-    makeFolder(name, color) {
-        return instance.post("Folders", {name, color})
+    async makeFolder(name, color) {
+        const accessToken = await store.dispatch(getAccessToken())
+        return instance.post("Folders", {name, color}, {headers: {Authorization: `Bearer ${accessToken}`}})
     },
 
     getFolder(folderId) {

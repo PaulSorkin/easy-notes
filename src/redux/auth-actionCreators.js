@@ -60,3 +60,26 @@ export const getAccessToken = () => async (dispatch) => {
         return null
     }
 }
+
+// export const getAccessToken = () => async (dispatch) => {
+//     try {
+//         const accessToken = store.getState().auth.authData.accessToken
+//         const refreshToken = store.getState().auth.authData.refreshToken
+//
+//         if (!accessToken || isTokenExpired(accessToken)) {
+//             if (refreshTokenRequest === null) {
+//                 refreshTokenRequest = accountAPI.refreshToken()
+//             }
+//             const res = await refreshTokenRequest
+//             refreshTokenRequest = null
+//
+//             dispatch(loginSuccess({accessToken: res.data.accessToken, refreshToken: res.data.refreshToken}))
+//
+//             return {accessToken: res.data.accessToken, refreshToken: res.data.refreshToken}
+//         }
+//         return ({accessToken, refreshToken})
+//     } catch (e) {
+//         console.error(e)
+//         return null
+//     }
+// }
