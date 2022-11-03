@@ -9,14 +9,15 @@ import {
 import {accountAPI} from "../api/api";
 import {store} from "./store/store";
 import {isTokenExpired} from "../utils/jwt";
+import {getFolders} from "./store/folders-actionCreators";
 
 export const loginUser = (username, password) => async (dispatch) => {
     try {
         dispatch(loginStart())
-
         const res = await accountAPI.login(username, password)
         dispatch(loginSuccess({accessToken: res.data.accessToken, refreshToken: res.data.refreshToken}))
         dispatch(getProfile())
+        dispatch(getFolders())
     } catch (e) {
         console.error(e)
         dispatch(loginFailure(e.message))

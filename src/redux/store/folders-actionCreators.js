@@ -22,3 +22,18 @@ export const newFolder = (name, color) => async (dispatch) => {
         dispatch(makeNewFolderFailure(e.message))
     }
 }
+
+let fetchingFoldersList = null;
+export const getExisingFolders = () => async (dispatch) => {
+    try {
+            if (fetchingFoldersList === null) {
+                fetchingFoldersList = foldersAPI.getFolders()
+            }
+            const res = await fetchingFoldersList
+            dispatch(getFoldersListSuccess(res.data))
+            fetchingFoldersList = null
+    } catch (e) {
+        console.error(e)
+        return null
+    }
+}

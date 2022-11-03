@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     foldersList: {
-        folders: null,
+        allFolders: [],
         id: null,
         name: null,
         color: null,
@@ -25,7 +25,7 @@ export const foldersReducer = createSlice({
         getFoldersListSuccess: (state, action) => ({
             ...state, foldersList: {
                 ...state.foldersList,
-                folders: action.payload,
+                allFolders: action.payload,
                 // id: action.payload.id,
                 // name: action.payload.name,
                 // color: action.payload.color,
