@@ -4,6 +4,8 @@ import {getProfile} from "../../redux/auth-actionCreators";
 import Login from "../Login/Login-form";
 import Folders from "../Folders/Folders";
 import {newFolder} from "../../redux/store/folders-actionCreators";
+import NewNote from "../Notes/NoteForm";
+import NewFolder from "../Folders/NewFolderForm";
 
 const Main = (props) => {
 
@@ -26,8 +28,8 @@ const Main = (props) => {
             <p>Email {email}</p>
             <button onClick={() => dispatch(getProfile())}>Update profile</button>
             <Folders />
-            <button onClick={() => dispatch((newFolder("First test", "White")))}>New folder</button>
-            <button onClick={() => dispatch((newFolder("Second test", "Blue")))}>New folder2</button>
+            <NewFolder />
+            <NewNote />
         </div>
     );
 

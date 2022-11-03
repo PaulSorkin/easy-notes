@@ -2,9 +2,7 @@ import styles from "../FormsControl/FormsControl.module.css"
 import {Form, Formik} from "formik";
 import {MyTextInput} from "../FormsControl/FormsControl";
 import * as Yup from "yup";
-import {accountAPI} from "../../api/api"
 import {useAppDispatch} from "../../redux/store/store";
-import {useState} from "react";
 import {loginUser} from "../../redux/auth-actionCreators";
 
 const LoginForm = ({validationSchema, onSubmit}) => {
@@ -17,11 +15,11 @@ const LoginForm = ({validationSchema, onSubmit}) => {
             {({status}) =>
                 <Form>
                     <div>
-                        <MyTextInput name={"username"} placeholder={"Username"} />
+                        <MyTextInput name={"username"} placeholder={"Username"}/>
                     </div>
 
                     <div>
-                        <MyTextInput name={"password"} type={"password"} placeholder={"Password"} />
+                        <MyTextInput name={"password"} type={"password"} placeholder={"Password"}/>
                     </div>
                     {status && <div className={styles.server_error_message}>{status}</div>}
                     <div>
@@ -46,11 +44,11 @@ const Login = (props) => {
     }
 
 
-     // const onSubmit = async (values, actions) => {
-     //     let response = await accountAPI.login(values.username, values.password);
-     //     actions.setSubmitting(false);
-     //     console.log(response)
-     // };
+    // const onSubmit = async (values, actions) => {
+    //     let response = await accountAPI.login(values.username, values.password);
+    //     actions.setSubmitting(false);
+    //     console.log(response)
+    // };
 
 
     const validationSchema = Yup.object({
@@ -67,7 +65,7 @@ const Login = (props) => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginForm onSubmit={onSubmit} validationSchema={validationSchema} />
+            <LoginForm onSubmit={onSubmit} validationSchema={validationSchema}/>
         </div>
     );
 }

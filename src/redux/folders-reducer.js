@@ -9,7 +9,9 @@ const initialState = {
         notesCount: null,
         isLoading: false,
         error: null,
-    }
+        colors: ['White', 'Blue', 'Orange', 'Red', 'Yellow', 'Purple', 'Pink', 'Green', 'Lime', 'LightGray']
+    },
+
 }
 
 export const foldersReducer = createSlice({
@@ -51,7 +53,8 @@ export const foldersReducer = createSlice({
             ...state, foldersList: {
                 ...state.foldersList,
                 name: action.payload.name,
-                color: action.payload.color
+                color: action.payload.color,
+                isLoading: false,
             }
         }),
         makeNewFolderFailure: (state, action) => ({

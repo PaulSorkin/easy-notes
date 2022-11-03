@@ -17,6 +17,7 @@ export const newFolder = (name, color) => async (dispatch) => {
         dispatch(makeNewFolderStart())
         const res= await foldersAPI.makeFolder(name, color)
         dispatch(makeNewFolderSuccess({name: res.data.name, color: res.data.color}))
+        dispatch(getFolders())
     } catch (e) {
         console.error(e)
         dispatch(makeNewFolderFailure(e.message))
