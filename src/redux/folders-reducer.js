@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {deleteFolder} from "./store/folders-actionCreators";
 
 const initialState = {
     foldersList: {
@@ -64,11 +65,30 @@ export const foldersReducer = createSlice({
                 error: action.payload,
             }
         }),
+        deleteFolderStart: (state) => ({
+            ...state, foldersList: {
+                ...state.foldersList,
+                isLoading: true,
+            }
+        }),
+        deleteFolderSuccess: (state) => ({
+            ...state, foldersList: {
+                ...state.foldersList,
+                isLoading: false,
+            }
+        }),
+        deleteFolderFailure: (state, action) => ({
+            ...state, foldersList: {
+                ...state.foldersList,
+                isLoading: false,
+                error: action.payload,
+            }
+        }),
     }
 })
 
-export const { getFoldersListStart, getFoldersListSuccess,
-    getFoldersListFailure, makeNewFolderFailure,
-    makeNewFolderStart, makeNewFolderSuccess } = foldersReducer.actions
+export const { getFoldersListStart, getFoldersListSuccess, getFoldersListFailure,
+    makeNewFolderFailure, makeNewFolderStart, makeNewFolderSuccess,
+    deleteFolderStart, deleteFolderSuccess, deleteFolderFailure } = foldersReducer.actions
 
 export default foldersReducer.reducer

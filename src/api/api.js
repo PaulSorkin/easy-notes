@@ -47,8 +47,9 @@ export const foldersAPI = {
         return instance.put(`Folders/${folderId}`, {name, color})
     },
 
-    deleteFolder(folderId) {
-        return instance.delete(`Folders/${folderId}`)
+    async deleteFolder(folderId) {
+        const accessToken = await store.dispatch(getAccessToken())
+        return instance.delete(`Folders/${folderId}`, {headers: {Authorization: `Bearer ${accessToken}`}})
     },
 
     getNotes(folderId) {

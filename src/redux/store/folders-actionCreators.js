@@ -1,4 +1,12 @@
-import {getFoldersListFailure, getFoldersListStart, getFoldersListSuccess, makeNewFolderStart, makeNewFolderSuccess, makeNewFolderFailure} from "../folders-reducer";
+import {
+    getFoldersListFailure,
+    getFoldersListStart,
+    getFoldersListSuccess,
+    makeNewFolderStart,
+    makeNewFolderSuccess,
+    makeNewFolderFailure,
+    deleteFolderStart, deleteFolderSuccess, deleteFolderFailure
+} from "../folders-reducer";
 import {foldersAPI} from "../../api/api";
 
 export const getFolders = () => async (dispatch) => {
@@ -24,6 +32,18 @@ export const newFolder = (name, color) => async (dispatch) => {
     }
 }
 
+export const deleteFolder = (folderId) => async (dispatch) => {
+    try {
+        dispatch(deleteFolderStart())
+        const res = await foldersAPI.deleteFolder(folderId)
+        dispatch(deleteFolderSuccess())
+        dispatch(getFolders())
+    } catch (e) {
+        console.error(e)
+        dispatch(deleteFolderFailure(e.message))
+    }
+}
+// Will I use this?
 let fetchingFoldersList = null;
 export const getExisingFolders = () => async (dispatch) => {
     try {
