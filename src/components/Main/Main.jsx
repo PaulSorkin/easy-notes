@@ -29,7 +29,6 @@ const Main = (props) => {
             <button onClick={() => dispatch(getProfile())}>Update profile</button>
             <Folders />
             <NewFolder />
-            <NewNote />
         </div>
     );
 

@@ -49,7 +49,6 @@ export const getFolder = (folderId) => async (dispatch) => {
     dispatch(getFolderStart())
         const res = await foldersAPI.getFolder(folderId)
         dispatch(getFolderSuccess({id: res.data.id, name: res.data.name, color: res.data.color, notesCount: res.data.notesCount}))
-        console.log(res.data)
     } catch (e) {
         console.error(e)
         dispatch(getFolderFailure(e.message))

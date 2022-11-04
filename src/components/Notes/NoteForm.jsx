@@ -1,12 +1,8 @@
 import {Form, Formik} from "formik";
 import {MySelect, MyTextareaInput, MyTextInput} from "../FormsControl/FormsControl";
 import styles from "../FormsControl/FormsControl.module.css";
-import {useSelector} from "react-redux";
-import {useAppDispatch} from "../../redux/store/store";
-import * as Yup from "yup";
 
 export const NoteForm = ({validationSchema, onSubmit, notesColors}) => {
-    //const foldersColors = useSelector(state => state.folders.foldersList.colors);
     return (
         <Formik initialValues={{
             title: '',

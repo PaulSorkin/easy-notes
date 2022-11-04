@@ -9,6 +9,7 @@ const NewNote = (props) => {
 
     const onSubmit = (values, actions) => {
         dispatch(postNewNote(props.folderId, values.title, values.content))
+        actions.resetForm();
     }
 
     const notesColors = useSelector(state => state.notes.colors);

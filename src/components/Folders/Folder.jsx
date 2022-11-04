@@ -2,6 +2,7 @@ import {useAppDispatch} from "../../redux/store/store";
 import {deleteFolder} from "../../redux/store/folders-actionCreators";
 import styles from "./Folder.module.css"
 import NewNote from "../Notes/NewNote";
+import FolderNotes from "./FolderNotes";
 
 const Folder = (props) => {
 
@@ -16,6 +17,7 @@ const Folder = (props) => {
             <div className={styles.new_note_form}>
                 <NewNote folderId={props.id} />
             </div>
+            <FolderNotes folderId={props.id} />
         </div>
     )
 }
