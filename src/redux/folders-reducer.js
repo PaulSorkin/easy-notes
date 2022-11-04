@@ -11,6 +11,14 @@ const initialState = {
         error: null,
         colors: ['White', 'Blue', 'Orange', 'Red', 'Yellow', 'Purple', 'Pink', 'Green', 'Lime', 'LightGray']
     },
+    oneFolder: {
+        id: null,
+        name: null,
+        color: null,
+        notesCount: null,
+        isLoading: false,
+        error: null,
+    },
 
 }
 
@@ -83,11 +91,37 @@ export const foldersReducer = createSlice({
                 error: action.payload,
             }
         }),
+        getFolderStart: state => ({
+            ...state, oneFolder: {
+                ...state.oneFolder,
+                isLoading: true,
+            }
+        }),
+        getFolderSuccess: (state, action) => ({
+            ...state, oneFolder: {
+                ...state.oneFolder,
+                id: action.payload.id,
+                name: action.payload.name,
+                color: action.payload.color,
+                notesCount: action.payload.notesCount,
+                isLoading: false,
+            }
+        }),
+        getFolderFailure: (state, action) => ({
+            ...state, oneFolder: {
+                ...state.oneFolder,
+                isLoading: false,
+                error: action.payload,
+            }
+        }),
     }
 })
 
-export const { getFoldersListStart, getFoldersListSuccess, getFoldersListFailure,
+export const {
+    getFoldersListStart, getFoldersListSuccess, getFoldersListFailure,
     makeNewFolderFailure, makeNewFolderStart, makeNewFolderSuccess,
-    deleteFolderStart, deleteFolderSuccess, deleteFolderFailure } = foldersReducer.actions
+    deleteFolderStart, deleteFolderSuccess, deleteFolderFailure,
+    getFolderStart, getFolderSuccess, getFolderFailure
+} = foldersReducer.actions
 
 export default foldersReducer.reducer

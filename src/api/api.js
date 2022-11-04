@@ -39,8 +39,9 @@ export const foldersAPI = {
         return instance.post("Folders", {name, color}, {headers: {Authorization: `Bearer ${accessToken}`}})
     },
 
-    getFolder(folderId) {
-        return instance.get(`Folders/${folderId}`)
+    async getFolder(folderId) {
+        const accessToken = await store.dispatch(getAccessToken())
+        return instance.get(`Folders/${folderId}`, {headers: {Authorization: `Bearer ${accessToken}`}})
     },
 
     pushFolderInfo(folderId, name, color) {

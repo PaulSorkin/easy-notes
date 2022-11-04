@@ -6,6 +6,7 @@ import {
     makeNewNoteSuccess
 } from "./notes-reducer";
 import {foldersAPI, notesAPI} from "../../api/api";
+import {getFolder} from "./folders-actionCreators";
 
 export const getNotes = (folderId) => async (dispatch) => {
     try {
@@ -24,6 +25,7 @@ export const postNewNote = (folderId, title, content, color) => async (dispatch)
         const res = await foldersAPI.makeNote(folderId, title, content, color)
         dispatch(makeNewNoteSuccess())
         dispatch(getNotes(folderId))
+        dispatch(getFolder(folderId))
     } catch (e) {
         console.error(e)
         dispatch(makeNewNoteFailure(e.message))

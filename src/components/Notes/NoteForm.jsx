@@ -11,7 +11,7 @@ export const NoteForm = ({validationSchema, onSubmit, notesColors}) => {
         <Formik initialValues={{
             title: '',
             content: '',
-            color: null
+            color: 'choose color'
         }} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({status}) =>
                 <Form>
@@ -23,6 +23,7 @@ export const NoteForm = ({validationSchema, onSubmit, notesColors}) => {
                     </div>
                     <div>
                         <MySelect name="color" label={"Folder color"}>
+                            <option key={"choose color"} value={"choose color"}>choose color</option>
                             {notesColors.map(e => <option key={e} value={e}>{e}</option>)}
                         </MySelect>
                     </div>
