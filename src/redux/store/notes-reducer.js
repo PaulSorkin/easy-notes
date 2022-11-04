@@ -2,9 +2,9 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     notesList: [],
-    colors: ['White', 'Blue', 'Orange', 'Red', 'Yellow', 'Purple', 'Pink', 'Green', 'Lime', 'LightGray'],
     isLoading: false,
     error: null,
+    colors: ['White', 'Blue', 'Orange', 'Red', 'Yellow', 'Purple', 'Pink', 'Green', 'Lime', 'LightGray']
 }
 
 export const notesReducer = createSlice({

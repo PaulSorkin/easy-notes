@@ -4,10 +4,9 @@ import styles from "../FormsControl/FormsControl.module.css";
 import {useSelector} from "react-redux";
 import {useAppDispatch} from "../../redux/store/store";
 import * as Yup from "yup";
-import {newFolder} from "../../redux/store/folders-actionCreators";
+import {getFolders, newFolder} from "../../redux/store/folders-actionCreators";
 
-const FolderForm = ({validationSchema, onSubmit}) => {
-    const foldersColors = useSelector(state => state.folders.foldersList.colors);
+const FolderForm = ({validationSchema, onSubmit, foldersColors}) => {
     return (
         <Formik initialValues={{
             name: '',
@@ -40,6 +39,7 @@ const NewFolder = (props) => {
 
     const onSubmit = (values, actions) => {
         dispatch(newFolder(values.name, values.color));
+        dispatch(getFolders());
         actions.resetForm();
     }
 
@@ -59,7 +59,7 @@ const NewFolder = (props) => {
     return (
         <div>
             <h2>New Folder</h2>
-            <FolderForm validationSchema={validationSchema} onSubmit={onSubmit} />
+            <FolderForm validationSchema={validationSchema} onSubmit={onSubmit} foldersColors={foldersColors} />
         </div>
     )
 }

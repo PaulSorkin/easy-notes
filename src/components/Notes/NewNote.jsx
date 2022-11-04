@@ -8,7 +8,7 @@ const NewNote = (props) => {
     const dispatch = useAppDispatch();
 
     const onSubmit = (values, actions) => {
-        dispatch(postNewNote(props.folderId, values.title, values.content))
+        dispatch(postNewNote(props.folderId, values.title, values.content, values.color))
         actions.resetForm();
     }
 

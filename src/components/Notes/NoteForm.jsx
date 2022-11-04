@@ -7,7 +7,7 @@ export const NoteForm = ({validationSchema, onSubmit, notesColors}) => {
         <Formik initialValues={{
             title: '',
             content: '',
-            color: 'choose color'
+            color: ''
         }} validationSchema={validationSchema} onSubmit={onSubmit}>
             {({status}) =>
                 <Form>
