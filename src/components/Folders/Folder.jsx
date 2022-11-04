@@ -3,10 +3,20 @@ import {deleteFolder} from "../../redux/store/folders-actionCreators";
 import styles from "./Folder.module.css"
 import NewNote from "../Notes/NewNote";
 import FolderNotes from "./FolderNotes";
+import {useState} from "react";
+import {getNotes} from "../../redux/store/notes-actionCreators";
 
 const Folder = (props) => {
-
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
+    const [showNotes, setShowNotes] = useState(false);
+    const [button, setButton] = useState("Look Notes");
+    if (showNotes) {
+        dispatch(getNotes(props.id))
+    }
+    const handleClick = () => {
+        setShowNotes(prevState => !prevState);
+        setButton(showNotes ? "Look Notes" : "Hide Notes");
+    }
 
     return (
         <div className={styles.folder}>
@@ -17,7 +27,8 @@ const Folder = (props) => {
             <div className={styles.new_note_form}>
                 <NewNote folderId={props.id} />
             </div>
-            <FolderNotes folderId={props.id} />
+            <button onClick={handleClick}>{button}</button>
+            {showNotes && <FolderNotes folderId={props.id}/>}
         </div>
     )
 }

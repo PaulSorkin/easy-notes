@@ -7,6 +7,7 @@ const Note = (props) => {
             <p>color: {props.color}</p>
             <p>created: {props.created}</p>
             <p>updated: {props.updated}</p>
+            <button>Delete note</button>
         </div>
     )
 }

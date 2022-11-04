@@ -20,6 +20,7 @@ const FolderForm = ({validationSchema, onSubmit}) => {
                     </div>
                     <div>
                         <MySelect name="color" label={"Folder color"}>
+                            <option key={"choose color"} value={"choose color"}>choose color</option>
                             {foldersColors.map(e => <option key={e} value={e}>{e}</option>)}
                         </MySelect>
                     </div>
