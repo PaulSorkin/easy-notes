@@ -4,8 +4,8 @@ import {getProfile} from "../../redux/auth-actionCreators";
 import Login from "../Login/Login-form";
 import Folders from "../Folders/Folders";
 import {newFolder} from "../../redux/store/folders-actionCreators";
-import NewNote from "../Notes/NoteForm";
 import NewFolder from "../Folders/NewFolderForm";
+import NewNote from "../Notes/NewNote";
 
 const Main = (props) => {
 

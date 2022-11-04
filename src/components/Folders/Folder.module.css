@@ -1,0 +1,9 @@
+.folder {
+    padding: 5px;
+    border: brown solid 2px;
+}
+
+.new_note_form {
+    padding: 3px;
+    border: goldenrod dashed 2px;
+}

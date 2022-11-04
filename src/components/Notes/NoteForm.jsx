@@ -5,8 +5,8 @@ import {useSelector} from "react-redux";
 import {useAppDispatch} from "../../redux/store/store";
 import * as Yup from "yup";
 
-const NoteForm = ({validationSchema, onSubmit}) => {
-    const foldersColors = useSelector(state => state.folders.foldersList.colors);
+export const NoteForm = ({validationSchema, onSubmit, notesColors}) => {
+    //const foldersColors = useSelector(state => state.folders.foldersList.colors);
     return (
         <Formik initialValues={{
             title: '',
@@ -23,7 +23,7 @@ const NoteForm = ({validationSchema, onSubmit}) => {
                     </div>
                     <div>
                         <MySelect name="color" label={"Folder color"}>
-                            {foldersColors.map(e => <option key={e} value={e}>{e}</option>)}
+                            {notesColors.map(e => <option key={e} value={e}>{e}</option>)}
                         </MySelect>
                     </div>
                     {status && <div className={styles.server_error_message}>{status}</div>}
@@ -37,34 +37,3 @@ const NoteForm = ({validationSchema, onSubmit}) => {
     )
 }
 
-const NewNote = (props) => {
-    const dispatch = useAppDispatch();
-
-    const onSubmit = (values) => {              //TODO
-        dispatch()
-    }
-
-    const foldersColors = useSelector(state => state.folders.foldersList.colors);
-    const validationSchema = Yup.object({
-        title: Yup.string()
-            .max(30, 'Must be 30 characters or less')
-            .required('Required'),
-        content: Yup.string()
-            .max(200, 'Must be 200 characters or less'),
-        color: Yup.string()
-            .oneOf(
-                [foldersColors],
-                'Invalid color'
-            )
-            .required('Required'),
-    });
-
-    return (
-        <div>
-            <h2>New Note</h2>
-            <NoteForm validationSchema={validationSchema} onSubmit={onSubmit} />
-        </div>
-    )
-}
-
-export default NewNote

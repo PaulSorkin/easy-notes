@@ -1,5 +1,4 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {deleteFolder} from "./store/folders-actionCreators";
 
 const initialState = {
     foldersList: {

@@ -52,12 +52,14 @@ export const foldersAPI = {
         return instance.delete(`Folders/${folderId}`, {headers: {Authorization: `Bearer ${accessToken}`}})
     },
 
-    getNotes(folderId) {
-        return instance.get(`Folders/${folderId}/notes`)
+    async getNotes(folderId) {
+        const accessToken = await store.dispatch(getAccessToken())
+        return instance.get(`Folders/${folderId}/notes`, {headers: {Authorization: `Bearer ${accessToken}`}})
     },
 
-    makeNote(folderId, title, content, color) {
-        return instance.post(`Folders/${folderId}/notes`, {title, content, color})
+    async makeNote(folderId, title, content, color) {
+        const accessToken = await store.dispatch(getAccessToken())
+        return instance.post(`Folders/${folderId}/notes`, {title, content, color}, {headers: {Authorization: `Bearer ${accessToken}`}})
     }
 }
 
