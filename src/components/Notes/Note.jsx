@@ -1,4 +1,8 @@
+import {useAppDispatch} from "../../redux/store/store";
+import {deleteNote} from "../../redux/store/notes-actionCreators";
+
 const Note = (props) => {
+    const dispatch = useAppDispatch();
     return (
         <div>
             <p>id: {props.id}</p>
@@ -7,7 +11,7 @@ const Note = (props) => {
             <p>color: {props.color}</p>
             <p>created: {props.created}</p>
             <p>updated: {props.updated}</p>
-            <button>Delete note</button>
+            <button onClick={() => dispatch(deleteNote(props.id, props.folderId))}>Delete note</button>
         </div>
     )
 }

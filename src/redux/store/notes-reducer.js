@@ -31,7 +31,6 @@ export const notesReducer = createSlice({
         }),
         makeNewNoteSuccess: (state, action) => ({
             ...state,
-            //notesList: action.payload,
             isLoading: false,
         }),
         makeNewNoteFailure: (state, action) => ({
@@ -39,12 +38,25 @@ export const notesReducer = createSlice({
             isLoading: false,
             error: action.payload,
         }),
-
+        deleteNoteStart: state => ({
+            ...state,
+            isLoading: true,
+        }),
+        deleteNoteSuccess: (state, action) => ({
+            ...state,
+            isLoading: false,
+        }),
+        deleteNoteFailure: (state, action) => ({
+            ...state,
+            isLoading: false,
+            error: action.payload,
+        }),
     }
 
 })
 
 export const { getNotesListStart, getNotesListSuccess, getNotesListFailure,
-makeNewNoteStart, makeNewNoteSuccess, makeNewNoteFailure } = notesReducer.actions
+makeNewNoteStart, makeNewNoteSuccess, makeNewNoteFailure,
+deleteNoteStart, deleteNoteSuccess, deleteNoteFailure} = notesReducer.actions
 
 export default notesReducer.reducer

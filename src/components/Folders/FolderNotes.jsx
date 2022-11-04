@@ -9,7 +9,8 @@ const FolderNotes = (props) => {
             <h2>Notes in the folder</h2>
             {notes.map(e => <Note key={e.id} id={e.id} title={e.title}
                                   content={e.content} color={e.color}
-                                  created={e.created} updated={e.updated} />)}
+                                  created={e.created} updated={e.updated}
+                                  folderId={props.folderId}/>)}
         </div>
     )
 }

@@ -1,4 +1,6 @@
 import {
+    deleteNoteFailure,
+    deleteNoteStart, deleteNoteSuccess,
     getNotesListFailure,
     getNotesListStart,
     getNotesListSuccess,
@@ -6,7 +8,7 @@ import {
     makeNewNoteStart,
     makeNewNoteSuccess
 } from "./notes-reducer";
-import {foldersAPI} from "../../api/api";
+import {foldersAPI, notesAPI} from "../../api/api";
 
 export const getNotes = (folderId) => async (dispatch) => {
     try {
@@ -28,5 +30,17 @@ export const postNewNote = (folderId, title, content, color) => async (dispatch)
     } catch (e) {
         console.error(e)
         dispatch(makeNewNoteFailure(e.message))
+    }
+}
+
+export const deleteNote = (noteId, folderId) => async (dispatch) => {
+    try {
+        dispatch(deleteNoteStart())
+        const res = await notesAPI.deleteNote(noteId)
+        dispatch(deleteNoteSuccess())
+        dispatch(getNotes(folderId))
+    } catch (e) {
+        console.error(e)
+        dispatch(deleteNoteFailure(e.message))
     }
 }

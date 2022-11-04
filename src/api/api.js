@@ -73,8 +73,9 @@ export const notesAPI = {
         return instance.put(`Notes/${noteId}`, {title, content, color})
     },
 
-    deleteNote(noteId) {
-        return instance.delete(`Notes/${noteId}`)
+    async deleteNote(noteId) {
+        const accessToken = await store.dispatch(getAccessToken())
+        return instance.delete(`Notes/${noteId}`, {headers: {Authorization: `Bearer ${accessToken}`}})
     },
 
     moveNote(noteId, folderId) {
