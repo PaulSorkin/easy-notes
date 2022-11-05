@@ -78,7 +78,8 @@ export const notesAPI = {
         return instance.delete(`Notes/${noteId}`, {headers: {Authorization: `Bearer ${accessToken}`}})
     },
 
-    moveNote(noteId, folderId) {
-        return instance.post(`Notes/${noteId}/move-to/${folderId}`)
+    async moveNote(noteId, folderId) {
+        const accessToken = await store.dispatch(getAccessToken())
+        return instance.post(`Notes/${noteId}/move-to/${folderId}`, {}, {headers: {Authorization: `Bearer ${accessToken}`}})
     }
 }
