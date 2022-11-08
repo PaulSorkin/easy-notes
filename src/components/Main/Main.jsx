@@ -6,6 +6,9 @@ import Folders from "../Folders/Folders";
 import {newFolder} from "../../redux/store/folders-actionCreators";
 import NewFolder from "../Folders/NewFolderForm";
 import NewNote from "../Notes/NewNote";
+import {useEffect} from "react";
+import Header from "../Header/Header";
+import MainContent from "../MainContent/MainContent";
 
 const Main = (props) => {
 
@@ -14,28 +17,39 @@ const Main = (props) => {
     // }, [dispatch]);
 
 
-    const dispatch = useAppDispatch();
+    useEffect(() => {
+        document.title = 'Easy notes';
+    }, []);
 
-    const id = useSelector((state) => state.auth.profileData.id);
-    const email = useSelector((state) => state.auth.profileData.email);
-    const username = useSelector((state) => state.auth.profileData.username);
+
+    const dispatch = useAppDispatch();
     const isLoggedIn = useSelector((state) => !!state.auth.authData.accessToken);
+    const profileData = useSelector((state) => state.auth.profileData);
+
 
     const renderMainPage = () => (
-        <div>
-            <p>Glad to see you, {username}</p>
-            <p>Your id is {id}</p>
-            <p>Email {email}</p>
-            <button onClick={() => dispatch(getProfile())}>Update profile</button>
-            <Folders />
-            <NewFolder />
-        </div>
+        <>
+            <header>
+                <Header profileData={profileData}/>
+            </header>
+            <main>
+                <MainContent/>
+            </main>
+            <footer>
+                Github, year, etc
+            </footer>
+            {/*<div>*/}
+            {/*    <button onClick={() => dispatch(getProfile())}>Update profile</button>*/}
+            {/*    <Folders/>*/}
+            {/*    <NewFolder/>*/}
+            {/*</div>*/}
+        </>
     );
 
     return (
         <div>
             <h1>Main</h1>
-            {isLoggedIn ? renderMainPage() : <Login />}
+            {isLoggedIn ? renderMainPage() : <Login/>}
         </div>
     );
 }

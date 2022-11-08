@@ -1,6 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-//const SET_USER_DATA = 'easy-notes/auth/SET_USER_DATA'
 const initialState = {
     authData: {
         accessToken: null,
