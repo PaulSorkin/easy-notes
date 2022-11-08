@@ -29,7 +29,7 @@ const Folder = (props) => {
             </div>
             <div>
                 {showNotes && <>
-                    <FolderNotes folderId={props.id}/>
+                    <FolderNotes folderId={props.id} folderColor={props.color} folderName={props.name} />
                     <div className={"new_note_form"}>
                         <NewNote folderId={props.id}/>
                     </div>
