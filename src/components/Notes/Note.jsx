@@ -13,7 +13,7 @@ const Note = (props) => {
     const avalibleFolders = existingFolders.filter(e => e.id !== props.folderId);
     const avalibleFoldersClick = () => {
         setShowFolders(prevState => !prevState);
-        setShowFoldersButton(showFolders ? "Don't move" : "Move note to");
+        setShowFoldersButton(showFolders ? "Move note to" : "Don't move");
     }
 
     const validationSchema = Yup.object({
@@ -30,11 +30,10 @@ const Note = (props) => {
 
 
     return (
-        <div>
-            <p>id: {props.id}</p>
+        <div className={`note_container, ${props.color}`}>
             <p>title: {props.title}</p>
             <p>content: {props.content}</p>
-            <p>color: {props.color}</p>
+            <p>id: {props.id}</p>
             <p>created: {props.created}</p>
             <p>updated: {props.updated}</p>
             <button onClick={() => dispatch(deleteNote(props.id, props.folderId))}>Delete note</button>
