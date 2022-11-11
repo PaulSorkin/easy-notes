@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import {NoteForm} from "./NoteForm";
 import {postNewNote} from "../../redux/store/notes-actionCreators";
 
-const NewNote = (props) => {
+const   NewNote = (props) => {
     const dispatch = useAppDispatch();
 
     const onSubmit = (values, actions) => {

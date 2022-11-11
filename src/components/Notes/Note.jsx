@@ -31,18 +31,21 @@ const Note = (props) => {
 
     return (
         <div className={`note_container border_${props.color}`}>
-            <p className={`note_heading ${props.color}`}>title: {props.title}</p>
+            <p className={`note_heading ${props.color}`}>{props.title}</p>
             <div className={`note_content`}>
-                <p>content: {props.content}</p>
-                <p>id: {props.id}</p>
-                <p>created: {props.created}</p>
-                <p>updated: {props.updated}</p>
+                <p>{props.content}</p>
+                <div className={`service_info`}>
+                    <p><strong>id:</strong> {props.id}</p>
+                    <p><strong>created:</strong> {props.created}</p>
+                    <p><strong>updated:</strong> {props.updated}</p>
+                </div>
+                <div className={`note__buttons_block`}>
+                    <button onClick={() => dispatch(deleteNote(props.id, props.folderId))}>Delete note</button>
+                    <button onClick={avalibleFoldersClick}>{showFoldersButton}</button>
+                </div>
+                {showFolders && <MoveNoteForm validationSchema={validationSchema}
+                                              onSubmit={onSubmit} avalibleFolders={avalibleFolders}/>}
             </div>
-            <button onClick={() => dispatch(deleteNote(props.id, props.folderId))}>Delete note</button>
-            <button onClick={avalibleFoldersClick}>{showFoldersButton}</button>
-            {showFolders && <MoveNoteForm validationSchema={validationSchema}
-                                          onSubmit={onSubmit} avalibleFolders={avalibleFolders}/>}
-
         </div>
     )
 }
