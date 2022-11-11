@@ -1,11 +1,12 @@
+//abstract
+@import "abstract/placeholders";
+@import "abstract/constants";
+
 //base
 @import "base/backgrounds";
 @import "base/normilize";
 @import "base/fonts";
 @import "base/base";
-
-//abstract
-@import "abstract/placeholders";
 
 //components
 @import "components/MainContent";
