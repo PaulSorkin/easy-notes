@@ -1,0 +1,12 @@
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  @extend %font-primary;
+  font-size: 2rem;
+  max-width: 1440px;
+  margin: auto;
+  position: relative;
+}

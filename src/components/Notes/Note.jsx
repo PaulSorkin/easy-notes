@@ -30,12 +30,14 @@ const Note = (props) => {
 
 
     return (
-        <div className={`note_container, ${props.color}`}>
-            <p>title: {props.title}</p>
-            <p>content: {props.content}</p>
-            <p>id: {props.id}</p>
-            <p>created: {props.created}</p>
-            <p>updated: {props.updated}</p>
+        <div className={`note_container border_${props.color}`}>
+            <p className={`note_heading ${props.color}`}>title: {props.title}</p>
+            <div className={`note_content`}>
+                <p>content: {props.content}</p>
+                <p>id: {props.id}</p>
+                <p>created: {props.created}</p>
+                <p>updated: {props.updated}</p>
+            </div>
             <button onClick={() => dispatch(deleteNote(props.id, props.folderId))}>Delete note</button>
             <button onClick={avalibleFoldersClick}>{showFoldersButton}</button>
             {showFolders && <MoveNoteForm validationSchema={validationSchema}
