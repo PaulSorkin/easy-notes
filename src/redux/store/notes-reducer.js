@@ -4,7 +4,8 @@ const initialState = {
     notesList: [],
     isLoading: false,
     error: null,
-    colors: ['White', 'Blue', 'Orange', 'Red', 'Yellow', 'Purple', 'Pink', 'Green', 'Lime', 'LightGray']
+    colors: ['White', 'Blue', 'Orange', 'Red', 'Yellow', 'Purple', 'Pink', 'Green', 'Lime', 'LightGray'],
+    currentFolder: null,
 }
 
 export const notesReducer = createSlice({
@@ -24,6 +25,10 @@ export const notesReducer = createSlice({
             ...state,
             isLoading: false,
             error: action.payload,
+        }),
+        setCurrentFolder: (state, action) => ({
+            ...state,
+            currentFolder: action.payload,
         }),
         makeNewNoteStart: state => ({
             ...state,
@@ -72,6 +77,6 @@ export const notesReducer = createSlice({
 export const { getNotesListStart, getNotesListSuccess, getNotesListFailure,
 makeNewNoteStart, makeNewNoteSuccess, makeNewNoteFailure,
 deleteNoteStart, deleteNoteSuccess, deleteNoteFailure,
-moveNoteStart, moveNoteSuccess, moveNoteFailure} = notesReducer.actions
+moveNoteStart, moveNoteSuccess, moveNoteFailure, setCurrentFolder} = notesReducer.actions
 
 export default notesReducer.reducer

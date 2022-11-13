@@ -6,7 +6,7 @@ import {
     getNotesListSuccess,
     makeNewNoteFailure,
     makeNewNoteStart,
-    makeNewNoteSuccess, moveNoteFailure, moveNoteStart, moveNoteSuccess
+    makeNewNoteSuccess, moveNoteFailure, moveNoteStart, moveNoteSuccess, setCurrentFolder
 } from "./notes-reducer";
 import {foldersAPI, notesAPI} from "../../api/api";
 
@@ -15,6 +15,7 @@ export const getNotes = (folderId) => async (dispatch) => {
         dispatch(getNotesListStart())
         const res = await foldersAPI.getNotes(folderId)
         dispatch(getNotesListSuccess(res.data))
+        dispatch(setCurrentFolder(folderId))
     } catch (e) {
         console.error(e)
         dispatch(getNotesListFailure(e.message))
