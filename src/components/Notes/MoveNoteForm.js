@@ -16,7 +16,7 @@ export const MoveNoteForm = ({validationSchema, onSubmit, avalibleFolders}) => {
                     </MySelect>
                     {status && <div className={styles.server_error_message}>{status}</div>}
                     <div>
-                        <button type={"submit"}>Move</button>
+                        <button type={"submit"}>Transfer</button>
                     </div>
                 </Form>
             }

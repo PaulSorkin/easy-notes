@@ -8,15 +8,11 @@ import {getNotes} from "../../redux/store/notes-actionCreators";
 const Folder = (props) => {
     const dispatch = useAppDispatch();
     const [showNotes, setShowNotes] = useState(false);
-    // const [button, setButton] = useState("Watch Notes");
     if (showNotes) {
         dispatch(getNotes(props.id))
     }
     const handleClick = () => {
         setShowNotes(prevState => !prevState);
-        /*
-                setButton(showNotes ? "Watch Notes" : "Hide Notes");
-        */
     }
 
     return (

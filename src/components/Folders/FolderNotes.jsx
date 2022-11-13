@@ -3,6 +3,8 @@ import {useEffect, useState} from "react";
 import {foldersAPI} from "../../api/api";
 import {useSelector} from "react-redux";
 import NewNote from "../Notes/NewNote";
+import add from "../../img/logos/add.svg"
+import edit from "../../img/logos/edit.svg"
 
 const FolderNotes = (props) => {
     const notesList = useSelector(state => state.notes.notesList)
@@ -24,6 +26,12 @@ const FolderNotes = (props) => {
                                   content={e.content} color={e.color}
                                   created={e.created} updated={e.updated}
                                   folderId={props.folderId}/>)}
+            <button className={"app_button"}>
+                <img className={"button_logo"} src={add} alt={"add"}/>
+            </button>
+            <button className={"app_button"}>
+                <img className={"button_logo"} src={edit} alt={"edit"}/>
+            </button>
             <div className={"new_note_form"}>
                 <NewNote folderId={props.folderId}/>
             </div>

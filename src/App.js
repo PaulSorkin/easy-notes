@@ -1,12 +1,9 @@
 import './App.css';
 import Login from "./components/Login/Login-form";
 import Register from "./components/Login/Register-form";
-import NotesPage from "./components/NotesPage";
-import {Provider, useSelector} from "react-redux";
-import {store, useAppDispatch} from "./redux/store/store";
-import {useEffect} from "react";
-import {getProfile} from "./redux/auth-actionCreators";
-import {BrowserRouter, BrowserRouter as Router, Route, Routes} from "react-router-dom"
+import {Provider} from "react-redux";
+import {store} from "./redux/store/store";
+import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Main from "./components/Main/Main";
 
 function App() {

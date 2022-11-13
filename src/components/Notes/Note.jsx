@@ -4,6 +4,9 @@ import {useState} from "react";
 import {useSelector} from "react-redux";
 import * as Yup from "yup";
 import {MoveNoteForm} from "./MoveNoteForm";
+import del from "../../img/logos/delete.svg"
+import move from "../../img/logos/transfer.svg"
+
 
 const Note = (props) => {
     const dispatch = useAppDispatch();
@@ -34,17 +37,23 @@ const Note = (props) => {
             <p className={`note_heading ${props.color}`}>{props.title}</p>
             <div className={`note_content`}>
                 <p>{props.content}</p>
+                <div className={`note__buttons_block`}>
+                    <button title={"delete"} className={"app_button"} onClick={() => dispatch(deleteNote(props.id, props.folderId))}>
+                        <img className={"note__button_logo"} src={del} alt={"delete"}/>
+                    </button>
+                    <button title={"transfer to another folder"} className={"app_button"} onClick={avalibleFoldersClick}>
+                        <img className={"note__button_logo"} src={move} alt={"delete"}/>
+                    </button>
+                    {/*<button onClick={avalibleFoldersClick}>{showFoldersButton}</button>*/}
+                </div>
+                {showFolders && <MoveNoteForm validationSchema={validationSchema}
+                                              onSubmit={onSubmit}
+                                              avalibleFolders={avalibleFolders}/>}
                 <div className={`service_info`}>
                     <p><strong>id:</strong> {props.id}</p>
                     <p><strong>created:</strong> {props.created}</p>
                     <p><strong>updated:</strong> {props.updated}</p>
                 </div>
-                <div className={`note__buttons_block`}>
-                    <button onClick={() => dispatch(deleteNote(props.id, props.folderId))}>Delete note</button>
-                    <button onClick={avalibleFoldersClick}>{showFoldersButton}</button>
-                </div>
-                {showFolders && <MoveNoteForm validationSchema={validationSchema}
-                                              onSubmit={onSubmit} avalibleFolders={avalibleFolders}/>}
             </div>
         </div>
     )

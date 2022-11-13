@@ -1,14 +1,14 @@
 const Header = (props) => {
 
     return (
-        <div id={"header_container"}>
-            <div>
-                <p>Glad to see you, {props.profileData.username}</p>
+        <div className={"header_container"}>
+            <div className={"greeting_user"}>
+                <p>Glad to see you {props.profileData.username}</p>
             </div>
             <div className={"header__line"}>
                 <div>
-                    <p>Your id is {props.profileData.id}</p>
-                    <p>Email {props.profileData.email}</p>
+                    <p><strong>Your id:</strong> {props.profileData.id}</p>
+                    <p><strong>Email: </strong> {props.profileData.email}</p>
                 </div>
                 <div>
                     <button>Logout</button>

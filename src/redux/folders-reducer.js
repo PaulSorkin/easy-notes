@@ -16,6 +16,7 @@ const initialState = {
         name: null,
         color: null,
         notesCount: null,
+        isActive: false,
         isLoading: false,
         error: null,
     },
@@ -95,6 +96,7 @@ export const foldersReducer = createSlice({
             ...state, oneFolder: {
                 ...state.oneFolder,
                 isLoading: true,
+                isActive: false,
             }
         }),
         getFolderSuccess: (state, action) => ({
@@ -104,6 +106,7 @@ export const foldersReducer = createSlice({
                 name: action.payload.name,
                 color: action.payload.color,
                 notesCount: action.payload.notesCount,
+                isActive: true,
                 isLoading: false,
             }
         }),
@@ -111,6 +114,7 @@ export const foldersReducer = createSlice({
             ...state, oneFolder: {
                 ...state.oneFolder,
                 isLoading: false,
+                isActive: false,
                 error: action.payload,
             }
         }),

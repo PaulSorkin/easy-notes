@@ -5,11 +5,16 @@ const MainContent = (props) => {
 
     return (
         <div className={"main_container"}>
-            <div>
-                <Folders/>
+            <div className={"folders_block"}>
+                <div>
+                    <Folders/>
+                </div>
+                <div>
+                    <NewFolder/>
+                </div>
             </div>
             <div>
-                <NewFolder/>
+                NOTES
             </div>
         </div>
     )
