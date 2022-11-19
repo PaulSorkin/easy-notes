@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/PaulSorkin/easy-notes/static/css/main.5928e8ec.css",
-    "main.js": "/PaulSorkin/easy-notes/static/js/main.0496118e.js",
-    "static/js/787.071df676.chunk.js": "/PaulSorkin/easy-notes/static/js/787.071df676.chunk.js",
-    "static/media/transfer.svg": "/PaulSorkin/easy-notes/static/media/transfer.c127badece236b4184e94da4bdf73c9d.svg",
-    "static/media/delete.svg": "/PaulSorkin/easy-notes/static/media/delete.c82d75626d194b49527de5789d8edeea.svg",
-    "static/media/edit.svg": "/PaulSorkin/easy-notes/static/media/edit.d189d6fbf4c21c7d72dde002dd03843b.svg",
-    "static/media/add.svg": "/PaulSorkin/easy-notes/static/media/add.05b702a7cbc5492b490a019ee21d851a.svg",
-    "index.html": "/PaulSorkin/easy-notes/index.html",
-    "main.5928e8ec.css.map": "/PaulSorkin/easy-notes/static/css/main.5928e8ec.css.map",
-    "main.0496118e.js.map": "/PaulSorkin/easy-notes/static/js/main.0496118e.js.map",
-    "787.071df676.chunk.js.map": "/PaulSorkin/easy-notes/static/js/787.071df676.chunk.js.map"
+    "main.css": "/easy-notes/static/css/main.5928e8ec.css",
+    "main.js": "/easy-notes/static/js/main.35f685e0.js",
+    "static/js/787.071df676.chunk.js": "/easy-notes/static/js/787.071df676.chunk.js",
+    "static/media/transfer.svg": "/easy-notes/static/media/transfer.c127badece236b4184e94da4bdf73c9d.svg",
+    "static/media/delete.svg": "/easy-notes/static/media/delete.c82d75626d194b49527de5789d8edeea.svg",
+    "static/media/edit.svg": "/easy-notes/static/media/edit.d189d6fbf4c21c7d72dde002dd03843b.svg",
+    "static/media/add.svg": "/easy-notes/static/media/add.05b702a7cbc5492b490a019ee21d851a.svg",
+    "index.html": "/easy-notes/index.html",
+    "main.5928e8ec.css.map": "/easy-notes/static/css/main.5928e8ec.css.map",
+    "main.35f685e0.js.map": "/easy-notes/static/js/main.35f685e0.js.map",
+    "787.071df676.chunk.js.map": "/easy-notes/static/js/787.071df676.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5928e8ec.css",
-    "static/js/main.0496118e.js"
+    "static/js/main.35f685e0.js"
   ]
 }
